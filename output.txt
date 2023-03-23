@@ -1,3 +1,6 @@
+[3, 5, 7, 9, 10, 10, 10]
+
+
 The mean is 7.714286
 The median is 9.0
 The mode is [10]

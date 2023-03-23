@@ -1,12 +1,11 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Arrays;
 import java.util.Scanner;
 /**
-* This program calculates amount of mean median and mode
+* This program calculates amount of mean median and mode.
 *
 * @author  Alex De Meo
 * @version 1.0
@@ -33,8 +32,8 @@ public final class JavaArrays {
     public static void main(String[] args) throws Exception {
         // Initializing variables
         String line;
-        ArrayList<String> intList = new ArrayList<String>();
-        String err = "Error";
+        final ArrayList<String> intList = new ArrayList<String>();
+        final String err = "Error";
 
         try {
             // Creating the writer
@@ -58,11 +57,11 @@ public final class JavaArrays {
                 }
                 // More variables to be used in the next part
                 int counter = 0;
-                int[] intArr = new int[intList.size()];
+                final int[] intArr = new int[intList.size()];
 
                 for (String num : intList) {
                     // parsing to int
-                    int numInt = Integer.parseInt(num);
+                    final int numInt = Integer.parseInt(num);
                     // Putting the int into its spot in the array
                     intArr[counter] = numInt;
                     // Add one to the counter
@@ -71,11 +70,13 @@ public final class JavaArrays {
                 // Sorts the array that will be passed through to the functions
                 Arrays.sort(intArr);
                 // getting the mean, median and mode
-                float theMean = calcMean(intArr);
-                float median = calcMedian(intArr);
-                ArrayList<Integer> mode = calcMode(intArr);
+                final float theMean = calcMean(intArr);
+                final float median = calcMedian(intArr);
+                final ArrayList<Integer> mode = calcMode(intArr);
                 // Writing to the file with the return values
-                myWriter.write("The mean is " + theMean);
+                final String arrayString = Arrays.toString(intArr);
+                myWriter.write(arrayString);
+                myWriter.write("\n\n\nThe mean is " + theMean);
                 myWriter.write("\nThe median is " + median);
                 myWriter.write("\nThe mode is " + mode);
             } catch (IOException error) {
@@ -88,11 +89,12 @@ public final class JavaArrays {
         }
     }
     /**
-    * This is the method calculates the mean
+    * This is the method calculates the mean.
     *
     * @param numbers needed to calculate the mean
     * @return the mean
     */
+
     public static float calcMean(int[] numbers) {
         // setting the sum to 0
         int sum = 0;
@@ -102,19 +104,20 @@ public final class JavaArrays {
             sum += num;
         }
         // calculating the average/mean
-        float sumFlt = sum;
-        float mean = sumFlt / (float)numbers.length;
+        final float sumFlt = sum;
+        final float mean = sumFlt / (float) numbers.length;
         // returning to the main method
         return mean;
     }
     /**
-    * This is the method calculates the median
+    * This is the method calculates the median.
     *
     * @param numbers needed to calculate the median
     * @return the median
     */
+
     public static float calcMedian(int[] numbers) {
-        float median;
+        final float median;
         // Checks to see if the length of the array is even or odd
         // depending on which it is, there are two different ways of handling it
         if (numbers.length % 2 == 0) {
@@ -124,23 +127,24 @@ public final class JavaArrays {
                 ) / 2;
         } else {
             // calculating the median if it is odd
-            median = numbers[(int)Math.floor((float)numbers.length / 2.0)];
+            median = numbers[(int) Math.floor((float) numbers.length / 2.0)];
         }
         // returning to main method
         return median;
     }
     /**
-    * This is the method calculates the mode
+    * This is the method calculates the mode.
     *
     * @param numbers needed to calculate the mode
     * @return the mode
     */
+
     public static ArrayList<Integer> calcMode(int[] numbers) {
         // Declaring variables
         int maxRepeats = 0;
         int timesRepeated = 0;
         Integer number;
-        ArrayList<Integer> mode = new ArrayList<>();
+        final ArrayList<Integer> mode = new ArrayList<>();
         // Loops through the array
         for (int i = 0; i <= numbers.length - 1; i++) {
             // sets variable "number" to the current place in the array
@@ -153,7 +157,6 @@ public final class JavaArrays {
                 } else {
                     // Checks to see if theres a new record
                     if (timesRepeated > maxRepeats) {
-                        
                         // clears previous records
                         mode.clear();
                         // adds new record
@@ -167,11 +170,9 @@ public final class JavaArrays {
                     // reset the times repeated
                     timesRepeated = 0;
                 }
-            } else  {
-                System.out.println(i);
+            } else {
                 // Checks to see if theres a new record
                 if (timesRepeated > maxRepeats) {
-                    
                     // clears previous records
                     mode.clear();
                     // adds new record
